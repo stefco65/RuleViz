@@ -7,6 +7,10 @@ public class ThesisBlock extends RuleBlock {
         result = msg;
     }
 
+    public void setResult(String result) {
+        this.result = result;
+    }
+
     public String getResult() {
         return result;
     }

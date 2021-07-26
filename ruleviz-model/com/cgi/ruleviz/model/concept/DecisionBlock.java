@@ -7,8 +7,28 @@ public class DecisionBlock extends RuleBlock {
     private List<DecisionMatch> decisionMatches;
 
     public DecisionBlock (EntityAttribute cv, List<DecisionMatch> dms) {
-        controlValue = cv; decisionMatches = dms;
+        decisionMatches = dms;
+        controlValue = cv;
+        updateDecisionMatches();
     }
+
+    public void setControlValue(EntityAttribute controlValue) {
+        this.controlValue = controlValue;
+        updateDecisionMatches();
+    }
+
+    public void setDecisionMatches(List<DecisionMatch> decisionMatches) {
+        this.decisionMatches = decisionMatches;
+        updateDecisionMatches();
+    }
+
+    private void updateDecisionMatches() {
+        for(DecisionMatch dm : decisionMatches) {
+            dm.setControlValue(controlValue);
+        }
+    }
+
+    // TODO public add decisionmatch i odrazu ustawia atttrbut cv w predykacie
 
     @Override
     public String toString() {
@@ -16,11 +36,11 @@ public class DecisionBlock extends RuleBlock {
         int i = 0;
         for(DecisionMatch dm : decisionMatches) {
             if (i == 0)
-                result += "Jeżeli " + controlValue.toString() + " " + dm.toString();
+                result += "\nJeżeli " + dm.toString();
             else if (i == decisionMatches.size() - 1)
                 result += "\nw.p.p. " + dm.toString();
             else
-                result += "\nw.p.p. jeżeli " + controlValue.toString() + " " + dm.toString();
+                result += "\nw.p.p. jeżeli " + dm.toString();
             i++;
         }
         return result;

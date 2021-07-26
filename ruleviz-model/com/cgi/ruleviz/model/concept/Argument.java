@@ -1,12 +1,13 @@
 package com.cgi.ruleviz.model.concept;
 
 public class Argument {
-    private int value;
+    protected int value;
 
     public int getValue() {
         return value;
     }
 
+    public Argument() {}
     public Argument(int v) {
         value = v;
     }
