@@ -2,16 +2,16 @@ package com.cgi.ruleviz.gui.views.panels;
 
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 
-public class CenterPanel extends HorizontalLayout {
+public class MiddlePanel extends HorizontalLayout {
 
     private final LeftPanel leftPanel = new LeftPanel();
-    private final RightPanel rightPanel = new RightPanel();
+    private final BoardPanel boardPanel = new BoardPanel();
 
-    public CenterPanel() {
+    public MiddlePanel() {
 
         add (
                 leftPanel,
-                rightPanel
+                boardPanel
         );
         getStyle().set("border", "1px solid #9E9E9E");
         setSizeFull();

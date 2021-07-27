@@ -42,7 +42,7 @@ public class LeftPanel extends VerticalLayout {
         ArrayList<Rules> rulesList = new ArrayList<>();
         rulesList.add(new Rules("Reguła1"));
         rulesList.add(new Rules("Reguła2"));
-        rulesList.add(new Rules("Reguła35"));
+        rulesList.add(new Rules("Reguła3"));
 
         Grid<Rules> treeGrid = new Grid<>();
         treeGrid.setItems(rulesList);

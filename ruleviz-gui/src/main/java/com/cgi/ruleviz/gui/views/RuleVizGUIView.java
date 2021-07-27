@@ -1,20 +1,12 @@
 package com.cgi.ruleviz.gui.views;
 
-import com.cgi.ruleviz.gui.views.panels.CenterPanel;
+import com.cgi.ruleviz.gui.views.panels.MiddlePanel;
 import com.cgi.ruleviz.gui.views.panels.FooterPanel;
 import com.cgi.ruleviz.gui.views.panels.HeaderPanel;
-import com.cgi.ruleviz.gui.views.panels.Rules;
-import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.grid.Grid;
-import com.vaadin.flow.component.orderedlayout.FlexLayout;
-import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.RouteAlias;
-
-import java.util.ArrayList;
 
 @PageTitle("RuleVizGUI")
 @Route(value = "empty")
@@ -25,7 +17,7 @@ public class RuleVizGUIView extends VerticalLayout {
     private final int HEIGHT = 900;
 
     private HeaderPanel headerPanel = new HeaderPanel();
-    private CenterPanel centerPanel = new CenterPanel();
+    private MiddlePanel contentPanel = new MiddlePanel();
     private FooterPanel footerPanel = new FooterPanel();
 
     public RuleVizGUIView() {
@@ -34,7 +26,7 @@ public class RuleVizGUIView extends VerticalLayout {
 
         VerticalLayout mainFrame = new VerticalLayout(
                 headerPanel,
-                centerPanel,
+                contentPanel,
                 footerPanel
         );
 

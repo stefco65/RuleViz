@@ -5,7 +5,7 @@ import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextArea;
 
-public class RightPanel extends VerticalLayout {
+public class BoardPanel extends VerticalLayout {
 
 
     private final Button rule1 = new Button("Reguła1");
@@ -13,7 +13,7 @@ public class RightPanel extends VerticalLayout {
 
     private final TreeVisualizationPanel treeVisualizationPanel = new TreeVisualizationPanel();
 
-    public RightPanel() {
+    public BoardPanel() {
 
         FlexLayout buttonsAboveActionTree = new FlexLayout(rule1, rule2);
         buttonsAboveActionTree.getStyle().set("border", "1px solid #9E9E9E");
