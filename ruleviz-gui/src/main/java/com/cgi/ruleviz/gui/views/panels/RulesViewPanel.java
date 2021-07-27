@@ -5,9 +5,9 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
 import java.util.ArrayList;
 
-public class rulesViewPanel extends VerticalLayout {
+public class RulesViewPanel extends VerticalLayout {
 
-    public rulesViewPanel() {
+    public RulesViewPanel() {
 
         ArrayList<Rules> rulesList = new ArrayList<>();
         rulesList.add(new Rules("Reguła1"));

@@ -5,9 +5,9 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
 import java.util.ArrayList;
 
-public class constansViewPanel extends VerticalLayout {
+public class ConstansViewPanel extends VerticalLayout {
 
-    public constansViewPanel() {
+    public ConstansViewPanel() {
 
         ArrayList<Constans>  constansList = new ArrayList<>();
         constansList.add(new Constans("Stała1"));

@@ -1,7 +1,6 @@
 package com.cgi.ruleviz.gui.views.panels;
 
 import com.vaadin.flow.component.Component;
-import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.tabs.Tabs;
@@ -15,9 +14,9 @@ public class LeftPanel extends VerticalLayout {
     private final Tab domainsGridTab = new Tab("Domeny");
     private final Tab constantGridTab = new Tab("Stałe");
 
-    private final rulesViewPanel gridRules = new rulesViewPanel();
-    private final domainViewPanel gridDomains = new domainViewPanel();
-    private final constansViewPanel gridConstans = new constansViewPanel();
+    private final RulesViewPanel gridRules = new RulesViewPanel();
+    private final DomainViewPanel gridDomains = new DomainViewPanel();
+    private final ConstansViewPanel gridConstans = new ConstansViewPanel();
 
 
     public LeftPanel()  {
@@ -38,7 +37,7 @@ public class LeftPanel extends VerticalLayout {
         tabsToPages.put(domainsGridTab, gridDomains);
         tabsToPages.put(constantGridTab, gridConstans);
 
-        //================== new layout for buttons ==================//
+        //================== adding tabs  ==============================//
         Tabs tabs = new Tabs(
                 rulesGridTab,
                 domainsGridTab,
@@ -79,7 +78,12 @@ public class LeftPanel extends VerticalLayout {
             selectedPage.setVisible(true);
         });
 
-        add(tabs, gridRules, gridDomains, gridConstans);
+        add(
+                tabs,
+                gridRules,
+                gridDomains,
+                gridConstans
+        );
 
     }
 }

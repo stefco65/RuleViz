@@ -5,9 +5,9 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
 import java.util.ArrayList;
 
-public class domainViewPanel extends VerticalLayout {
+public class DomainViewPanel extends VerticalLayout {
 
-    public domainViewPanel() {
+    public DomainViewPanel() {
 
         ArrayList<Domains> domainsList = new ArrayList<>();
         domainsList.add(new Domains("Domena1"));
