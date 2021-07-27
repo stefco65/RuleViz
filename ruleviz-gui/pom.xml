@@ -3,9 +3,9 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <!-- Vaadin project from https://start.vaadin.com/project/e05b51e3-4d8b-498a-bfd1-8053970efb2c -->
-    <groupId>com.example.application</groupId>
-    <artifactId>rulevizgui</artifactId>
-    <name>Project base for Spring Boot and Vaadin Flow</name>
+    <groupId>com.cgi.ruleviz</groupId>
+    <artifactId>ruleviz-gui</artifactId>
+    <name>RuleViz jest to aplikacja webowa do wizualizacji reguł decyzyjnych.</name>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
