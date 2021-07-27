@@ -1,4 +1,4 @@
-package com.cgi.ruleviz.gui.views;
+package com.cgi.ruleviz.gui.views.panels;
 
 public class Rules {
 
