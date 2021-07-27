@@ -1,69 +1,85 @@
 package com.cgi.ruleviz.gui.views.panels;
 
-import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.grid.Grid;
-import com.vaadin.flow.component.orderedlayout.FlexComponent;
-import com.vaadin.flow.component.orderedlayout.FlexLayout;
+import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.tabs.Tab;
+import com.vaadin.flow.component.tabs.Tabs;
 
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class LeftPanel extends VerticalLayout {
 
-    private final Button rulesGridButton = new Button("Reguły");
-    private final Button domainsGridButton = new Button("Domeny");
-    private final Button constantGridButton = new Button("Stałe");
+    private final Tab rulesGridTab = new Tab("Reguły");
+    private final Tab domainsGridTab = new Tab("Domeny");
+    private final Tab constantGridTab = new Tab("Stałe");
+
+    private final rulesViewPanel gridRules = new rulesViewPanel();
+    private final domainViewPanel gridDomains = new domainViewPanel();
+    private final constansViewPanel gridConstans = new constansViewPanel();
+
 
     public LeftPanel()  {
 
         //================= buttons configuration ======================//
-        rulesGridButton.setHeight("30px");
-        rulesGridButton.setWidth("100px");
-        rulesGridButton.getStyle().set("color", "blue");
+        rulesGridTab.getStyle().set("color", "blue");
 
-        domainsGridButton.setHeight("30px");
-        domainsGridButton.setWidth("100px");
-        domainsGridButton.getStyle().set("color", "blue");
+        domainsGridTab.getStyle().set("color", "blue");
 
-        constantGridButton.setHeight("30px");
-        constantGridButton.setWidth("100px");
-        constantGridButton.getStyle().set("color", "blue");
+        constantGridTab.getStyle().set("color", "blue");
 
+        gridConstans.setVisible(false);
+        gridDomains.setVisible(false);
+
+        // ================ hash map for tabs  ==========================//
+        Map<Tab, Component> tabsToPages = new HashMap<>();
+        tabsToPages.put(rulesGridTab, gridRules);
+        tabsToPages.put(domainsGridTab, gridDomains);
+        tabsToPages.put(constantGridTab, gridConstans);
 
         //================== new layout for buttons ==================//
-        FlexLayout gridButtons = new FlexLayout(
-                rulesGridButton,
-                domainsGridButton,
-                constantGridButton
-        );
-        gridButtons.setJustifyContentMode(FlexComponent.JustifyContentMode.EVENLY);
-
-        // ================= adding new rules for testing ===========//
-        ArrayList<Rules> rulesList = new ArrayList<>();
-        rulesList.add(new Rules("Reguła1"));
-        rulesList.add(new Rules("Reguła2"));
-        rulesList.add(new Rules("Reguła3"));
-
-        Grid<Rules> treeGrid = new Grid<>();
-        treeGrid.setItems(rulesList);
-        treeGrid.addColumn(Rules::getRule);
-
-        // ================ new layout for tabs(buttons) and tree grid =========//
-        VerticalLayout gridTreeWithButtonsLayout = new VerticalLayout(
-                gridButtons,
-                treeGrid
+        Tabs tabs = new Tabs(
+                rulesGridTab,
+                domainsGridTab,
+                constantGridTab
         );
 
+        // ================= tabs styling ============================ //
+        tabs.setSelectedTab(rulesGridTab);
+        tabs.getStyle().set("border", "1px solid #9E9E9E");
+        tabs.setMinWidth("350px");
+        tabs.setFlexGrowForEnclosedTabs(1);
+        tabs.setWidthFull();
+
+        // ================= grids styling ========================= //
+        gridRules.setSizeFull();
+        gridRules.setMinWidth("350px");
+        gridRules.setMinHeight("650px");
+
+        gridDomains.setSizeFull();
+        gridDomains.setMinWidth("350px");
+        gridDomains.setMinHeight("650px");
+
+        gridConstans.setSizeFull();
+        gridConstans.setMinWidth("350px");
+        gridConstans.setMinHeight("650px");
 
         // ================ styling ==========================================//
-        gridTreeWithButtonsLayout.getStyle().set("border", "1px solid #9E9E9E");
+        getStyle().set("border", "1px solid #9E9E9E");
         setSizeFull();
         setWidthFull();
-        gridTreeWithButtonsLayout.setMinWidth("350px");
-        gridTreeWithButtonsLayout.setMinHeight("700px");
+        setMinWidth("400px");
+        setMinHeight("700px");
 
-        add (gridTreeWithButtonsLayout);
 
+        tabs.addSelectedChangeListener(event -> {
+            tabsToPages.values().forEach(page -> page.setVisible(false));
+            Component selectedPage = tabsToPages.get(tabs.getSelectedTab());
+            selectedPage.setVisible(true);
+        });
+
+        add(tabs, gridRules, gridDomains, gridConstans);
 
     }
 }
